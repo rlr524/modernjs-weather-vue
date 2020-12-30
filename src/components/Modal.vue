@@ -1,10 +1,13 @@
 <template>
     <div>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#locModal">
+        Change Location
+    </button>
     <div class="modal fade" id="locModal" tabindex="-1" aria-labelledby="locModalLabel" aria-hidden="true">
         <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-            <h5 class="modal-title" id="locModalLabel">Choose Location</h5>
+            <div class="modal-header justify-content-center">
+            <h2 class="modal-title text-primary" id="locModalLabel">Choose Location</h2>
             </div>
             <div class="modal-body">
             <form id="w-form">
