@@ -34,7 +34,7 @@ export default {
   },
   methods: {
     getWeather: function() {
-      const weather = new Weather("98029");
+      const weather = new Weather("98101");
       const ui = new UI;
       weather.getWeather()
       .then(results => {
