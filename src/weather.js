@@ -12,11 +12,6 @@ class Weather {
         const response = await fetch (`http://api.openweathermap.org/data/2.5/weather?zip=${loc}&units=metric&appid=${this.apiKey}`);
         return await response.json();
     }
-
-    // Change weather location
-    changeLocation(zip) {
-        this.zip = zip;
-    }
 }
 
 export default Weather;

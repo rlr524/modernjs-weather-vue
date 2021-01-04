@@ -12,41 +12,20 @@
             <li id="w-wind" class="list-group-item"></li>
         </ul>
         <hr>
-        <app-modal />
+        <app-modal :zip-value="92071" />
     </div>
   </div>
 </template>
 
 <script>
-import Modal from "@/components/Modal"
-import Weather from "@/weather.js"
-import UI from "@/ui.js"
+import Modal from "@/components/Modal";
 
 export default {
   name: "App",
-  data: function() {
-    return {
-      location,
-    }
-  },
   components: {
     appModal: Modal
   },
-  methods: {
-    getWeather: function() {
-      const weather = new Weather("98101");
-      const ui = new UI;
-      weather.getWeather()
-      .then(results => {
-        ui.paint(results)
-        console.log(results);
-      })
-      .catch(err => console.log(err));
-    }
-  },
-  mounted() {
-    this.getWeather()
-  },
+
 }
 </script>
 
