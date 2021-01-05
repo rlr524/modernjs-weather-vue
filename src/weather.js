@@ -1,4 +1,4 @@
-class Weather {
+export default class Weather {
     constructor(zip) {
         this.apiKey = process.env.VUE_APP_WEATHER_API_KEY;
         // this.city = city;
@@ -13,5 +13,3 @@ class Weather {
         return await response.json();
     }
 }
-
-export default Weather;

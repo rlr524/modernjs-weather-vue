@@ -1,4 +1,4 @@
-class UI {
+export default class UI {
     constructor() {
         this.location = document.getElementById("w-location");
         this.desc = document.getElementById("w-desc");
@@ -18,5 +18,3 @@ class UI {
         this.wind.textContent = `Wind Speed: ${w.wind.speed} km/h`;
     }
 }
-
-export default UI;

@@ -71,15 +71,21 @@
 <script>
 import Weather from "@/weather.js";
 import UI from "@/ui.js";
+import Storage from '@/storage.js';
+
+const storage = new Storage();
+const weatherLocation = storage.getLocationData();
+const setLocation = storage.setLocationData();
 
 export default {
   name: "Modal",
   data: function () {
-    return {};
+    return {
+    };
   },
   methods: {
     getWeather: function () {
-      const weather = new Weather(this.zipValue);
+      const weather = new Weather(weatherLocation.zip);
       const ui = new UI();
       weather
         .getWeather()
@@ -89,21 +95,12 @@ export default {
         })
         .catch((err) => console.log(err));
     },
-    storeLocation: function () {
-      var storage = new Storage();
-      storage.setLocationData();
-      console.log(storage);
-    },
+    updateLocation: function () {
+      storage.setLocationData(setLocation.zip);
+    }
   },
   mounted() {
     this.getWeather();
-  },
-  props: {
-    zipValue: {
-      type: String,
-      required: false,
-      default: "98101",
-    },
   },
 };
 </script>

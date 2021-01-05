@@ -12,7 +12,7 @@
             <li id="w-wind" class="list-group-item"></li>
         </ul>
         <hr>
-        <app-modal :zip-value="92071" />
+        <app-modal />
     </div>
   </div>
 </template>
