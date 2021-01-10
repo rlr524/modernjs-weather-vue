@@ -57,7 +57,7 @@
               type="button"
               class="btn btn-primary"
               data-bs-dismiss="modal"
-              @click="updateLocation"
+              @click="setLocationData"
             >
               Save changes
             </button>
@@ -69,39 +69,8 @@
 </template>
 
 <script>
-import Weather from "@/weather.js";
-import UI from "@/ui.js";
-import Storage from '@/storage.js';
-
-const storage = new Storage();
-const weatherLocation = storage.getLocationData();
-const setLocation = storage.setLocationData();
-
 export default {
   name: "Modal",
-  data: function () {
-    return {
-    };
-  },
-  methods: {
-    getWeather: function () {
-      const weather = new Weather(weatherLocation.zip);
-      const ui = new UI();
-      weather
-        .getWeather()
-        .then((results) => {
-          ui.paint(results);
-          console.log(results);
-        })
-        .catch((err) => console.log(err));
-    },
-    updateLocation: function () {
-      storage.setLocationData(setLocation.zip);
-    }
-  },
-  mounted() {
-    this.getWeather();
-  },
 };
 </script>
 
