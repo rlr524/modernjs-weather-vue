@@ -27,31 +27,31 @@
               <div class="form-group">
                 <label for="zip">ZIP Code</label>
                 <input
-                  @input="onInput"
                   placeholder="Enter a US ZIP code"
                   type="text"
                   id="zip"
                   class="form-control"
                 />
               </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button
+                  id="w-change-btn"
+                  type="button"
+                  class="btn btn-primary"
+                  data-bs-dismiss="modal"
+                  @click="onInput"
+                >
+                  Save changes
+                </button>
+              </div>
             </form>
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Close
-            </button>
-            <button
-              id="w-change-btn"
-              type="button"
-              class="btn btn-primary"
-              data-bs-dismiss="modal"
-            >
-              Save changes
-            </button>
           </div>
         </div>
       </div>

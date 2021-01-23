@@ -28,24 +28,27 @@ export default {
   name: "App",
   data() {
     return {
-      zip: "",
+      zip: "98029",
     };
   },
   components: {
     appModal: Modal,
   },
   methods: {
-    onLocationEnter(location) {
+    onLocationEnter() {
       axios
         .get(
-          `http://api.openweathermap.org/data/2.5/weather?zip=${location}&units=metric&appid=${appId}`
+          `http://api.openweathermap.org/data/2.5/weather?zip=${this.zip}&units=metric&appid=${appId}`
         )
-        .then(() => (this.zip = location))
-        .then(ui.paint());
+        // .then((data) => console.log(data))
+        .then((data) => {
+          ui.paint(data);
+        })
+        .catch((err) => console.log(err));
     },
   },
   mounted() {
-    this.returnWeather();
+    this.onLocationEnter();
   },
 };
 </script>
