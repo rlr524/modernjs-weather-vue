@@ -24,18 +24,10 @@
           </div>
           <div class="modal-body">
             <form id="w-form">
-              <!-- <div class="form-group">
-                    <label for="city">City</label>
-                    <input type="text" id="city" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="state">State</label>
-                    <input type="text" id="state" class="form-control">
-                </div> -->
               <div class="form-group">
                 <label for="zip">ZIP Code</label>
                 <input
-                  v-model="zip"
+                  @input="onInput"
                   placeholder="Enter a US ZIP code"
                   type="text"
                   id="zip"
@@ -57,7 +49,6 @@
               type="button"
               class="btn btn-primary"
               data-bs-dismiss="modal"
-              @click="setLocationData"
             >
               Save changes
             </button>
@@ -71,6 +62,14 @@
 <script>
 export default {
   name: "Modal",
+  data: function () {
+    return {};
+  },
+  methods: {
+    onInput(e) {
+      this.$emit("locationChange", e.target.value);
+    },
+  },
 };
 </script>
 

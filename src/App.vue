@@ -12,27 +12,40 @@
         <li id="w-wind" class="list-group-item"></li>
       </ul>
       <hr />
-      <app-modal />
+      <app-modal @locationChange="onLocationEnter"></app-modal>
     </div>
   </div>
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
-import Modal from "@/components/Modal";
-// import UI from "@/ui.js";
+import axios from "axios";
+import Modal from "@/components/Modal.vue";
+import UI from "../src/ui";
+const ui = new UI();
+const appId = process.env.VUE_APP_WEATHER_API_KEY;
 
 export default {
   name: "App",
-  computed: mapGetters(["currentLocation"]),
+  data() {
+    return {
+      zip: "",
+    };
+  },
   components: {
     appModal: Modal,
   },
   methods: {
-    ...mapActions(["getWeather"]),
+    onLocationEnter(location) {
+      axios
+        .get(
+          `http://api.openweathermap.org/data/2.5/weather?zip=${location}&units=metric&appid=${appId}`
+        )
+        .then(() => (this.zip = location))
+        .then(ui.paint());
+    },
   },
   mounted() {
-    this.getWeather();
+    this.returnWeather();
   },
 };
 </script>
